@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "env2ini"
+  site-url: "https://dsm-72.github.io/env2ini"
+  description: "conda environment file to ini file"
+  repo-branch: main
+  repo-url: "https://github.com/dsm-72/env2ini"
