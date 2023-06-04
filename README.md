@@ -41,11 +41,16 @@ $ pip install -e .
 $ nbdev_prepare
 ```
 
+## Legacy
+
+the deprecated original script `env_to_ini.py`
+
 ### env_to_ini.py
 
-This script is provided so that if the `env.yml` (or `env.mac.yml`) file
-changes you can automatically update the depedencies of the `env2ini`
-package (under `settings.ini`) to match.
+This script is not a part of the package. It is however provided to show
+where the project came from. It was designed so that if your `env.yml`
+(or `env.mac.yml`) file changes you can automatically update the
+depedencies of the `env2ini` package (under `settings.ini`) to match.
 
 ``` sh
 $ python env_to_ini.py
@@ -63,12 +68,23 @@ You can also update the conda environment file to modify the behavior
 under a key `env2ini`:
 
 ``` yml
+  # for conda plugins
+  - conda
+
+  # for publishing to pypi and conda
+  - twine
+  - anaconda-client
+
 env2ini:
-
   ignore:
-    - python
     - pip
-
+    - python
+    - twine
+    - anaconda-client
+    - notebook
+    - ipykernel
+    - ipywidgets
+    - jupyter_contrib_nbextensions
   aliases:
     torch: pytorch
     lightning: pytorch-lightning
@@ -81,40 +97,4 @@ EnvironmentSectionNotValid: The following section on 'path/to/file/env.yml' is i
  - env2ini
 ```
 
-Here is the full environment file used to make this package for
-reference:
-
-``` yml
-name: env2ini
-channels:  
-  - conda-forge  
-  - fastai
-
-dependencies:  
-  - python>=3.10
-
- # Utilities
- # -------------------------------------------------------------------------
-  - tqdm
-  - rich
-  - typer
-
-  # Jupyter Notebook
-  # -------------------------------------------------------------------------
-  - conda-forge::notebook
-  - conda-forge::ipykernel
-  - conda-forge::ipywidgets
-  - conda-forge::jupyter_contrib_nbextensions
-  
-  # nbdev
-  # -------------------------------------------------------------------------
-  - fastai::nbdev>=2.3.12
-
-env2ini:
-  ignore:
-    - python
-    - pip
-  aliases:
-    torch: pytorch
-    torchvision: pytorch
-```
+Here is the full environment file can be found under `env.mac.yml`.
