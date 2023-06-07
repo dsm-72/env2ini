@@ -145,4 +145,4 @@ d = { 'settings': { 'branch': 'main',
                                'env2ini.utils.read_ini_file': ('utils.html#read_ini_file', 'env2ini/utils.py'),
                                'env2ini.utils.split_package_str_at_first_non_alpha': ( 'utils.html#split_package_str_at_first_non_alpha',
                                                                                        'env2ini/utils.py'),
-                               'env2ini.utils.to_macos_env_file': ('utils.html#to_macos_env_file', 'env2ini/utils.py')}}}
+                               'env2ini.utils.to_mps_env_file': ('utils.html#to_mps_env_file', 'env2ini/utils.py')}}}

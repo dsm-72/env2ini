@@ -27,7 +27,7 @@ from env2ini.constants import (
 
 from env2ini.utils import (
     split_package_str_at_first_non_alpha,
-    to_macos_env_file, parse_aliases
+    to_mps_env_file, parse_aliases
 )
 
 from env2ini.types import (
@@ -55,9 +55,9 @@ def export_conda_to_ini(
         help='The settings.ini file to update.',
     ),
 
-    macos: Optional[bool] = typer.Option(
-        False,'--macos', '-m',
-        help='Whether or not to use the macos env file. `{os.path.basename(file)}.mac.yml`.',
+    mps: Optional[bool] = typer.Option(
+        False,'--mps', '-m',
+        help='Whether or not to use the mps env file. `{os.path.basename(file)}.mps.yml`.',
     ),
 
     dryrun: Optional[bool] = typer.Option(
@@ -86,11 +86,11 @@ def export_conda_to_ini(
     ),
     
 ):      
-    # NOTE: notice that file is `env.mac.yml` and not `env.yml`. Now with Apple Silicon I have 
+    # NOTE: notice that file is `env.mps.yml` and not `env.yml`. Now with Apple Silicon I have 
     #       one env file for more common CUDA versions and one for Apple Silicon.
     cprint('bold cyan', f'Loading environment yaml file {file}...')
-    if macos:
-        file = to_macos_env_file(file)
+    if mps:
+        file = to_mps_env_file(file)
         
     with open(file, 'r') as f:
         yml_env = yaml.safe_load(f)

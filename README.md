@@ -41,33 +41,135 @@ $ pip install -e .
 $ nbdev_prepare
 ```
 
-## Legacy
-
-the deprecated original script `env_to_ini.py`
-
-### env_to_ini.py
-
-This script is not a part of the package. It is however provided to show
-where the project came from. It was designed so that if your `env.yml`
-(or `env.mac.yml`) file changes you can automatically update the
-depedencies of the `env2ini` package (under `settings.ini`) to match.
+### Publishing
 
 ``` sh
-$ python env_to_ini.py
+# publish to pypi
+$ nbdev_pypi
 
-# show packages that didnt change
-$ python env_to_ini.py  --unchanged  
-
-# specify a different environment file
-$ python env_to_ini.py  --unchanged  --file=env.mac.yml
+# publish to conda
+$ nbdev_conda
 ```
 
 # Usage
 
+## Installation
+
+Install latest from the GitHub
+[repository](https://github.com/dsm-72/env2ini):
+
+``` sh
+$ pip install git+https://github.com/dsm-72/env2ini.git
+```
+
+or from [conda](https://anaconda.org/dsm-72/env2ini)
+
+``` sh
+$ conda install -c dsm-72 env2ini
+```
+
+or from [pypi](https://pypi.org/project/env2ini/)
+
+``` sh
+$ pip install env2ini
+```
+
+## Documentation
+
+Documentation can be found hosted on GitHub
+[repository](https://github.com/dsm-72/env2ini)
+[pages](https://dsm-72.github.io/env2ini/). Additionally you can find
+package manager specific guidelines on
+[conda](https://anaconda.org/dsm-72/env2ini) and
+[pypi](https://pypi.org/project/env2ini/) respectively.
+
+``` shell
+$ env2ini --help
+```
+
+| Option                 | Short Option | Type | Description                                                                                    | Default Value  |
+|------------------------|--------------|------|------------------------------------------------------------------------------------------------|----------------|
+| `--file`               | `-f`         | TEXT | YAML file to extract the new requirements from.                                                | `env.yml`      |
+| `--ini-file`           | `-i`         | TEXT | The `settings.ini` file to update.                                                             | `settings.ini` |
+| `--mps`                | `-m`         |      | Whether or not to use the mps env file (`{os.path.basename(file)}.mps.yml`).                   |                |
+| `--dryrun`             | `-d`         |      | Whether to actually update the `settings.ini` file or just print the changes.                  |                |
+| `--unchanged`          | `-u`, `-a`   |      | Whether to print all packages, including the ones whose versions haven’t changed.              |                |
+| `--ignore`             | `-ig`        | TEXT | List of dependencies to ignore.                                                                | `None`         |
+| `--alias`              | `-al`        | TEXT | Dictionary of aliases for conda dependencies in the format: `package1:alias1;package2:alias2`. | `None`         |
+| `--confirm`            | `-c`         |      | Ask for confirmation before writing to the `ini` file.                                         | `True`         |
+| `--install-completion` |              |      | Install completion for the current shell.                                                      |                |
+| `--show-completion`    |              |      | Show completion for the current shell, to copy it or customize the installation.               |                |
+| `--help`               |              |      | Show this message and exit.                                                                    |                |
+
 You can also update the conda environment file to modify the behavior
 under a key `env2ini`:
 
-``` yml
+``` yaml
+dependencies:
+  # for conda plugins
+  - conda
+
+  # for publishing to pypi and conda
+  - twine
+  - anaconda-client
+
+# env2ini specifications
+env2ini:
+  # packages to ignore (not moved to settings.ini)
+  ignore:
+    - pip
+    - python
+    - twine
+    - anaconda-client
+    - notebook
+    - ipykernel
+    - ipywidgets
+    - jupyter_contrib_nbextensions
+  # mapping of the name of the package on conda to that of its name in pypi
+  aliases:
+    torch: pytorch
+    lightning: pytorch-lightning
+```
+
+**Note**: doing so will yield a warning which looks like this:
+
+``` sh
+EnvironmentSectionNotValid: The following section on 'path/to/file/env.yml' is invalid and will be ignored:
+ - env2ini
+```
+
+### Example Environment File
+
+Here is the full environment file can be found under `env.mps.yml` with
+which this package was made:
+
+``` yaml
+name: env2ini
+channels:  
+  - conda-forge  
+  - fastai
+
+dependencies:  
+  - python>=3.10
+
+  # Utilities
+  # -------------------------------------------------------------------------
+  - tqdm
+  - rich
+  - typer
+
+  # Jupyter Notebook
+  # -------------------------------------------------------------------------
+  - conda-forge::notebook
+  - conda-forge::ipykernel
+  - conda-forge::ipywidgets
+  - conda-forge::jupyter_contrib_nbextensions
+  
+  # nbdev
+  # -------------------------------------------------------------------------
+  - fastai::nbdev>=2.3.12
+  - pyyaml
+
   # for conda plugins
   - conda
 
@@ -90,11 +192,23 @@ env2ini:
     lightning: pytorch-lightning
 ```
 
-**Note**: doing so will yield a warning which looks like this:
+## Legacy
+
+the deprecated original script `env_to_ini.py`
+
+### env_to_ini.py
+
+This script is not a part of the package. It is however provided to show
+where the project came from. It was designed so that if your `env.yml`
+(or `env.mac.yml`) file changes you can automatically update the
+depedencies of the `env2ini` package (under `settings.ini`) to match.
 
 ``` sh
-EnvironmentSectionNotValid: The following section on 'path/to/file/env.yml' is invalid and will be ignored:
- - env2ini
-```
+$ python env_to_ini.py
 
-Here is the full environment file can be found under `env.mac.yml`.
+# show packages that didnt change
+$ python env_to_ini.py  --unchanged  
+
+# specify a different environment file
+$ python env_to_ini.py  --unchanged  --file=env.mac.yml
+```
