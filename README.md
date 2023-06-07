@@ -37,7 +37,7 @@ $ pip install -e .
 # make changes under nbs/ directory
 # ...
 
-# compile to have changes apply to the ivanova package
+# compile to have changes apply to the env2ini package
 $ nbdev_prepare
 ```
 
