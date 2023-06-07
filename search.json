@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "commands.html",
+    "href": "commands.html",
+    "title": "commands",
+    "section": "",
+    "text": "source\n\nexport_conda_to_ini\n\n export_conda_to_ini (file:Optional[str]=&lt;typer.models.OptionInfo object\n                      at 0x7f6fcf595ea0&gt;,\n                      ini_file:Optional[str]=&lt;typer.models.OptionInfo\n                      object at 0x7f6fcf595ed0&gt;,\n                      mps:Optional[bool]=&lt;typer.models.OptionInfo object\n                      at 0x7f6fcf595f00&gt;,\n                      dryrun:Optional[bool]=&lt;typer.models.OptionInfo\n                      object at 0x7f6fcf595f30&gt;,\n                      unchanged:Optional[bool]=&lt;typer.models.OptionInfo\n                      object at 0x7f6fcf595f60&gt;, dependencies_to_ignore:Op\n                      tional[List[str]]=&lt;typer.models.OptionInfo object at\n                      0x7f6fcf595f90&gt;, dependency_aliases:Optional[str]=&lt;t\n                      yper.models.OptionInfo object at 0x7f6fcf595fc0&gt;,\n                      confirm:Optional[bool]=&lt;typer.models.OptionInfo\n                      object at 0x7f6fcf595ff0&gt;)\n\n\nsource\n\n\nrun_export_conda_to_ini\n\n run_export_conda_to_ini ()"
+  },
+  {
+    "objectID": "utils.html",
+    "href": "utils.html",
+    "title": "utils",
+    "section": "",
+    "text": "source\n\nto_mps_env_file\n\n to_mps_env_file (file:str)\n\n\nsource\n\n\nread_ini_file\n\n read_ini_file (file:str='settings.ini')\n\n\nsource\n\n\nsplit_package_str_at_first_non_alpha\n\n split_package_str_at_first_non_alpha (package_str:str)\n\n\nsource\n\n\nis_valid_conda_package_name_char\n\n is_valid_conda_package_name_char (char:str)\n\nUsed to split a package name from a version number. This is achieved by checking if a character is valid for a conda package name. Since between the package name and the version number there is a space, or conditional (&gt;, &lt;, =, etc).\n\nsource\n\n\nparse_aliases\n\n parse_aliases (alias_str:Optional[str])"
+  },
+  {
+    "objectID": "dataclasses.html",
+    "href": "dataclasses.html",
+    "title": "Data Classes",
+    "section": "",
+    "text": "/opt/hostedtoolcache/Python/3.10.11/x64/lib/python3.10/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Attributes\n  else: warn(msg)\n/opt/hostedtoolcache/Python/3.10.11/x64/lib/python3.10/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Notes\n  else: warn(msg)\n\nsource\n\n\n\n Dependency (package:str, version:Optional[str]=None)\n\nRepresents a software dependency with a package name and optional version.\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\npackage\nstr\n\nThe name of the package.\n\n\nversion\nOptional\nNone\nThe version of the package."
+  },
+  {
+    "objectID": "dataclasses.html#base-class",
+    "href": "dataclasses.html#base-class",
+    "title": "Data Classes",
+    "section": "",
+    "text": "/opt/hostedtoolcache/Python/3.10.11/x64/lib/python3.10/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Attributes\n  else: warn(msg)\n/opt/hostedtoolcache/Python/3.10.11/x64/lib/python3.10/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Notes\n  else: warn(msg)\n\nsource\n\n\n\n Dependency (package:str, version:Optional[str]=None)\n\nRepresents a software dependency with a package name and optional version.\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\npackage\nstr\n\nThe name of the package.\n\n\nversion\nOptional\nNone\nThe version of the package."
+  },
+  {
+    "objectID": "dataclasses.html#condadependency",
+    "href": "dataclasses.html#condadependency",
+    "title": "Data Classes",
+    "section": "CondaDependency",
+    "text": "CondaDependency\n\nsource\n\nCondaDependency\n\n CondaDependency (package:str, version:Optional[str]=None,\n                  channel:Optional[str]=None,\n                  pypi_name:Optional[str]=None)\n\nRepresents a dependency from a Conda environment."
+  },
+  {
+    "objectID": "dataclasses.html#inirequirement",
+    "href": "dataclasses.html#inirequirement",
+    "title": "Data Classes",
+    "section": "IniRequirement",
+    "text": "IniRequirement\n/opt/hostedtoolcache/Python/3.10.11/x64/lib/python3.10/site-packages/fastcore/docscrape.py:225: UserWarning: Unknown section Methods\n  else: warn(msg)\n\nsource\n\nIniRequirement\n\n IniRequirement (package:str, version:Optional[str]=None,\n                 conda_name:Optional[str]=None)\n\nRepresents a requirement specified in an INI file."
+  },
+  {
+    "objectID": "dataclasses.html#dependencylist",
+    "href": "dataclasses.html#dependencylist",
+    "title": "Data Classes",
+    "section": "DependencyList",
+    "text": "DependencyList\n\nsource\n\nDependencyList\n\n DependencyList (iterable=())\n\nRepresents a list of dependencies."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "env2ini",
+    "section": "",
+    "text": "# create conda environment\n$ mamba env create -f env.yml\n\n# update conda environment\n$ mamba env update -n env2ini --file env.yml\n# $ mamba env update -n env2ini --file env.mac.yml\n\n\n\npip install -e .\n\n# install from pypi\npip install env2ini\n\n\n\n# activate conda environment\n$ conda activate env2ini\n\n# make sure the env2ini package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to the env2ini package\n$ nbdev_prepare\n\n\n\n# publish to pypi\n$ nbdev_pypi\n\n# publish to conda\n$ nbdev_conda"
+  },
+  {
+    "objectID": "index.html#developer-guide",
+    "href": "index.html#developer-guide",
+    "title": "env2ini",
+    "section": "",
+    "text": "# create conda environment\n$ mamba env create -f env.yml\n\n# update conda environment\n$ mamba env update -n env2ini --file env.yml\n# $ mamba env update -n env2ini --file env.mac.yml\n\n\n\npip install -e .\n\n# install from pypi\npip install env2ini\n\n\n\n# activate conda environment\n$ conda activate env2ini\n\n# make sure the env2ini package is installed in development mode\n$ pip install -e .\n\n# make changes under nbs/ directory\n# ...\n\n# compile to have changes apply to the env2ini package\n$ nbdev_prepare\n\n\n\n# publish to pypi\n$ nbdev_pypi\n\n# publish to conda\n$ nbdev_conda"
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "env2ini",
+    "section": "Installation",
+    "text": "Installation\nInstall latest from the GitHub repository:\n$ pip install git+https://github.com/dsm-72/env2ini.git\nor from conda\n$ conda install -c dsm-72 env2ini\nor from pypi\n$ pip install env2ini"
+  },
+  {
+    "objectID": "index.html#documentation",
+    "href": "index.html#documentation",
+    "title": "env2ini",
+    "section": "Documentation",
+    "text": "Documentation\nDocumentation can be found hosted on GitHub repository pages. Additionally you can find package manager specific guidelines on conda and pypi respectively.\n$ env2ini --help\n\n\n\n\n\n\n\n\n\n\nOption\nShort Option\nType\nDescription\nDefault Value\n\n\n\n\n--file\n-f\nTEXT\nYAML file to extract the new requirements from.\nenv.yml\n\n\n--ini-file\n-i\nTEXT\nThe settings.ini file to update.\nsettings.ini\n\n\n--mps\n-m\n\nWhether or not to use the mps env file ({os.path.basename(file)}.mps.yml).\n\n\n\n--dryrun\n-d\n\nWhether to actually update the settings.ini file or just print the changes.\n\n\n\n--unchanged\n-u, -a\n\nWhether to print all packages, including the ones whose versions haven’t changed.\n\n\n\n--ignore\n-ig\nTEXT\nList of dependencies to ignore.\nNone\n\n\n--alias\n-al\nTEXT\nDictionary of aliases for conda dependencies in the format: package1:alias1;package2:alias2.\nNone\n\n\n--confirm\n-c\n\nAsk for confirmation before writing to the ini file.\nTrue\n\n\n--install-completion\n\n\nInstall completion for the current shell.\n\n\n\n--show-completion\n\n\nShow completion for the current shell, to copy it or customize the installation.\n\n\n\n--help\n\n\nShow this message and exit.\n\n\n\n\nYou can also update the conda environment file to modify the behavior under a key env2ini:\ndependencies:\n  # for conda plugins\n  - conda\n\n  # for publishing to pypi and conda\n  - twine\n  - anaconda-client\n\n# env2ini specifications\nenv2ini:\n  # packages to ignore (not moved to settings.ini)\n  ignore:\n    - pip\n    - python\n    - twine\n    - anaconda-client\n    - notebook\n    - ipykernel\n    - ipywidgets\n    - jupyter_contrib_nbextensions\n  # mapping of the name of the package on conda to that of its name in pypi\n  aliases:\n    torch: pytorch\n    lightning: pytorch-lightning\nNote: doing so will yield a warning which looks like this:\nEnvironmentSectionNotValid: The following section on 'path/to/file/env.yml' is invalid and will be ignored:\n - env2ini\n\nExample Environment File\nHere is the full environment file can be found under env.mps.yml with which this package was made:\nname: env2ini\nchannels:  \n  - conda-forge  \n  - fastai\n\ndependencies:  \n  - python&gt;=3.10\n\n  # Utilities\n  # -------------------------------------------------------------------------\n  - tqdm\n  - rich\n  - typer\n\n  # Jupyter Notebook\n  # -------------------------------------------------------------------------\n  - conda-forge::notebook\n  - conda-forge::ipykernel\n  - conda-forge::ipywidgets\n  - conda-forge::jupyter_contrib_nbextensions\n  \n  # nbdev\n  # -------------------------------------------------------------------------\n  - fastai::nbdev&gt;=2.3.12\n  - pyyaml\n\n  # for conda plugins\n  - conda\n\n  # for publishing to pypi and conda\n  - twine\n  - anaconda-client\n\nenv2ini:\n  ignore:\n    - pip\n    - python\n    - twine\n    - anaconda-client\n    - notebook\n    - ipykernel\n    - ipywidgets\n    - jupyter_contrib_nbextensions\n  aliases:\n    torch: pytorch\n    lightning: pytorch-lightning"
+  },
+  {
+    "objectID": "index.html#legacy",
+    "href": "index.html#legacy",
+    "title": "env2ini",
+    "section": "Legacy",
+    "text": "Legacy\nthe deprecated original script env_to_ini.py\n\nenv_to_ini.py\nThis script is not a part of the package. It is however provided to show where the project came from. It was designed so that if your env.yml (or env.mac.yml) file changes you can automatically update the depedencies of the env2ini package (under settings.ini) to match.\n$ python env_to_ini.py\n\n# show packages that didnt change\n$ python env_to_ini.py  --unchanged  \n\n# specify a different environment file\n$ python env_to_ini.py  --unchanged  --file=env.mac.yml"
+  },
+  {
+    "objectID": "rich.html",
+    "href": "rich.html",
+    "title": "Rich",
+    "section": "",
+    "text": "source\n\nprint_changes\n\n print_changes (added, removed, changed, remained)\n\n\nsource\n\n\ncprint\n\n cprint (style:str, text:str)"
+  }
+]
